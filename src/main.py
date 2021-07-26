@@ -13,13 +13,15 @@ def get_drive_instance(cred_file_path):
     return drive
 
 # will scrape tweets and store into ../data dir
-ScrapeTweets.run_snscrape_twitter_stream_job('nlproc', 500)
+ScrapeTweets.run_snscrape_twitter_stream_job('nlp', 1000)
+
+##Upload to Gdrive via Pydrive
 
 # Upload this data to Gdrive location
-all_files = glob('../data/*.json')
-drive_local_instance = get_drive_instance('google_api_cred.txt')
-classObj = GoogleDriveOps(drive_local_instance)
-classObj.upload_data_to_gdrive(all_files, 'your_folder_id')
+#all_files = glob('../data/*.json')
+#drive_local_instance = get_drive_instance('google_api_cred.txt')
+#classObj = GoogleDriveOps(drive_local_instance)
+#classObj.upload_data_to_gdrive(all_files, 'your_folder_id')
 
 
 

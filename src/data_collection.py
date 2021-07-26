@@ -7,7 +7,7 @@ class ScrapeTweets:
     def run_snscrape_twitter_stream_job(self, hashtag, limit=500):
         try:
             os.system(
-                'snscrape --jsonl --max-results {} twitter-hashtag {} > ./data/hashtag-{}-tweets.json'.format(limit,
+                'snscrape --jsonl --max-results {} twitter-hashtag {} > ../data/hashtag-{}-tweets.json'.format(limit,
                                                                                                                hashtag,
                                                                                                                hashtag))
         except:
@@ -16,7 +16,7 @@ class ScrapeTweets:
     def run_snscrape_twitter_profile_job(self, userName, limit=100):
         try:
             os.system(
-                'snscrape --jsonl --max-results {} twitter-search "from:{}" > ./data/user-tweets-{}.json'.format(limit,
+                'snscrape --jsonl --max-results {} twitter-search "from:{}" > ../data/user-tweets-{}.json'.format(limit,
                                                                                                                   userName,
                                                                                                                   userName))
         except:
@@ -33,12 +33,14 @@ class ScrapeTweets:
         """
         try:
             os.system(
-                'snscrape --jsonl --max-results {} --since {} twitter-search "{} until:{}" > ./data/text-query-tweets-{}.json'.format(
+                'snscrape --jsonl --max-results {} --since {} twitter-search "{} until:{}" > ../data/text-query-tweets-{}.json'.format(
                     limit, since, textQuery, until, textQuery))
         except:
             print('CLI command failure..')
 
 
 if __name__ == '__main__':
+    pass
+    print('all done')
     # classObj = ScrapeTweets()
     # classObj.run_snscrape_twitter_stream_job('nlproc', 1000)
