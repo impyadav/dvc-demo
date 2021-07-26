@@ -16,12 +16,8 @@ def get_textual_data_for_word2vec_and_fasttext(dataframe, col_name):
 
 
 def fasttext_fit(list_of_token_lists):
-    return FastText(list_of_token_lists, min_count=2, vector_size=128, window=2)
+    return FastText(list_of_token_lists, min_count=2, vector_size=64, window=2)
 
-
-def save_model(model):
-    fname = get_tmpfile('../models/fastText.model')
-    model.save(fname)
 
 
 if __name__ == '__main__':
@@ -29,10 +25,10 @@ if __name__ == '__main__':
     df = get_dataframe_from_json(jsondir)
 
 
-    dataset = get_textual_data_for_word2vec_and_fasttext(df, 'cleanedContent')
+    dataset = get_textual_data_for_word2vec_and_fasttext(df[500:600], 'cleanedContent')
     try:
         model = fasttext_fit(dataset)
-        save_model(model)
+        model.save('../models/fastText.model')
     except Exception as e:
         print('Error in training')
         print(e)
